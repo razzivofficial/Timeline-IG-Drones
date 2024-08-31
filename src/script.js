@@ -4,6 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const timelineDescription = document.querySelector(".timeline-description");
   const timelineImage = document.querySelector(".timeline-image");
 
+  const timelineContent = {
+    "April 2018": {
+      title: "April 2018",
+      description:
+        "We are one of India's leading drone firms in providing end-to-end Drone Solutions.",
+      image: "./resources/drone.jpg",
+    },
+    // Add content for other years here...
+  };
+
   timelineEntries.forEach((entry) => {
     entry.addEventListener("click", () => {
       timelineEntries.forEach((e) => {
@@ -14,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
       entry.querySelector(".timeline-dot").classList.add("active");
 
       const year = entry.getAttribute("data-year");
-      // const content = timelineContent[year] || {
-      //   title: "Unknown",
-      //   description: "No description available.",
-      //   image: "./resources/placeholder.jpg",
-      // };
+      const content = timelineContent[year] || {
+        title: "Unknown",
+        description: "No description available.",
+        image: "./resources/placeholder.jpg",
+      };
 
       timelineTitle.textContent = content.title;
       timelineDescription.textContent = content.description;
