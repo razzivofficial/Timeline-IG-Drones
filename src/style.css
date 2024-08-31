@@ -57,13 +57,12 @@ body {
 
 .timeline {
   display: flex;
+  flex-direction: row; /* Default for larger screens */
   justify-content: space-between;
   align-items: center;
   position: relative;
   margin-bottom: 50px;
-  padding-bottom: 10px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 40px;
 }
 
 .timeline-line {
@@ -95,16 +94,16 @@ body {
   transition: background-color 0.3s ease, transform 0.3s ease;
   position: relative;
   z-index: 2;
-  top: -15px;
+  top: -38px;
 }
 
 .timeline-dot.active {
   background: radial-gradient(circle closest-side, #ffffff 50%, #007bff 50%);
-  transform: scale(1.2);
 }
 
 .timeline-date {
   margin-top: 10px;
+  margin-bottom: 50px;
   color: #666;
   font-size: 14px;
   transition: color 0.3s ease;
@@ -131,16 +130,29 @@ body {
   }
 
   .timeline {
-    flex-direction: column;
-    padding-left: 0;
-    padding-right: 0;
+    flex-direction: column; /* Stack timeline entries vertically on mobile */
+    padding: 0;
+  }
+
+  .timeline-line {
+    left: 50%;
+    width: 4px; /* Adjust width for vertical line */
+    height: auto; /* Allow height to grow as needed */
+    transform: translateX(-50%); /* Center the vertical line */
   }
 
   .timeline-entry {
     margin-bottom: 20px;
+    position: relative;
+  }
+  .timeline-date {
+    margin-bottom: 10px;
   }
 
-  .timeline-details {
-    margin-top: 20px;
+  .timeline-dot {
+    top: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

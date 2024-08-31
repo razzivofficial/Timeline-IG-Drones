@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const timelineDescription = document.querySelector(".timeline-description");
   const timelineImage = document.querySelector(".timeline-image");
   const timeline = document.querySelector(".timeline");
-  const timelineLine = document.createElement("div");
-  timelineLine.classList.add("timeline-line");
-  timeline.appendChild(timelineLine);
+  const timelineLine = document.querySelector(".timeline-line");
 
   const timelineContent = {
     "April 2018": {
@@ -54,24 +52,47 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateTimelineLine = () => {
-    const startDot = timelineEntries[0].querySelector(".timeline-dot");
-    const endDot =
-      timelineEntries[timelineEntries.length - 1].querySelector(
-        ".timeline-dot"
-      );
+    if (window.innerWidth <= 768) {
+      // For mobile view, set vertical line properties
+      const timelineRect = timeline.getBoundingClientRect();
+      const startDot = timelineEntries[0].querySelector(".timeline-dot");
+      const endDot =
+        timelineEntries[timelineEntries.length - 1].querySelector(
+          ".timeline-dot"
+        );
 
-    const startDotRect = startDot.getBoundingClientRect();
-    const endDotRect = endDot.getBoundingClientRect();
-    const containerRect = timeline.getBoundingClientRect();
+      const startDotRect = startDot.getBoundingClientRect();
+      const endDotRect = endDot.getBoundingClientRect();
 
-    const startLeft =
-      startDotRect.left - containerRect.left + startDotRect.width / 2;
-    const endLeft =
-      endDotRect.right - containerRect.left - endDotRect.width / 2;
-    const lineWidth = endLeft - startLeft;
+      const startTop =
+        startDotRect.top - timelineRect.top + startDotRect.height / 2;
+      const endTop =
+        endDotRect.bottom - timelineRect.top - endDotRect.height / 2;
+      const lineHeight = endTop - startTop;
 
-    timelineLine.style.left = `${startLeft}px`;
-    timelineLine.style.width = `${lineWidth}px`;
+      timelineLine.style.top = `${startTop}px`;
+      timelineLine.style.height = `${lineHeight}px`;
+    } else {
+      // For larger screens, keep horizontal line properties
+      const startDot = timelineEntries[0].querySelector(".timeline-dot");
+      const endDot =
+        timelineEntries[timelineEntries.length - 1].querySelector(
+          ".timeline-dot"
+        );
+
+      const startDotRect = startDot.getBoundingClientRect();
+      const endDotRect = endDot.getBoundingClientRect();
+      const containerRect = timeline.getBoundingClientRect();
+
+      const startLeft =
+        startDotRect.left - containerRect.left + startDotRect.width / 2;
+      const endLeft =
+        endDotRect.right - containerRect.left - endDotRect.width / 2;
+      const lineWidth = endLeft - startLeft;
+
+      timelineLine.style.left = `${startLeft}px`;
+      timelineLine.style.width = `${lineWidth}px`;
+    }
   };
 
   const updateTimelineContent = (content) => {
@@ -107,8 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateTimelineContent(content);
 
-    // Optional: Add a slight delay before updating the line
-    setTimeout(updateTimelineLine, 300); // Delay matches the transition duration in CSS
+    setTimeout(updateTimelineLine, 300);
   };
 
   timelineEntries.forEach((entry) => {
