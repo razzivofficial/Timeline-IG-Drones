@@ -8,15 +8,51 @@ document.addEventListener("DOMContentLoaded", function () {
   timelineLine.classList.add("timeline-line");
   timeline.appendChild(timelineLine);
 
-  const timelineContent = {
-    "April 2018": {
-      title: "April 2018",
-      description:
-        "We are one of India's leading drone firms in providing end-to-end Drone Solutions.",
-      image: "./resources/drone.jpg",
-    },
-    // Add content for other years here...
-  };
+const timelineContent = {
+  "April 2018": {
+    title: "April 2018",
+    description:
+      "We are one of India's leading drone firms in providing end-to-end Drone Solutions.",
+    image: "./resources/drone1.jpg",
+  },
+  "April 2019": {
+    title: "April 2019",
+    description:
+      "Launched our new drone model with enhanced battery life and improved camera resolution.",
+    image: "./resources/drone2.jpg",
+  },
+  "April 2020": {
+    title: "April 2020",
+    description:
+      "Expanded our services to include drone-based agricultural solutions, improving crop monitoring and management.",
+    image: "./resources/drone3.png",
+  },
+  "April 2021": {
+    title: "April 2021",
+    description:
+      "Partnered with government agencies to develop drones for disaster management and emergency response.",
+    image: "./resources/drone4.jpeg",
+  },
+  "April 2022": {
+    title: "April 2022",
+    description:
+      "Introduced autonomous drone technology for urban logistics and delivery services.",
+    image: "./resources/drone5.jpg",
+  },
+  "April 2023": {
+    title: "April 2023",
+    description:
+      "Achieved ISO certification for our drone manufacturing processes, ensuring the highest standards of quality and safety.",
+    image: "./resources/drone6.png",
+  },
+  "April 2024": {
+    title: "April 2024",
+    description:
+      "Rolled out our global expansion strategy, entering new international markets with our cutting-edge drone solutions.",
+    image: "./resources/drone7.jpeg",
+  },
+};
+
 
   const updateTimelineLine = () => {
     const startDot = timelineEntries[0].querySelector(".timeline-dot");

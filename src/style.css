@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  /* background-color: #fff; */
+    background-color: whitesmoke;
   margin: 0;
   padding: 0;
   display: flex;
@@ -94,7 +95,7 @@ body {
 }
 
 .timeline-dot.active {
-  background: radial-gradient(circle closest-side, #ddd 50%, #007bff 50%);
+  background: radial-gradient(circle closest-side, #ffffff 50%, #007bff 50%);
 }
 
 .timeline-date {
