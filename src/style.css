@@ -1,7 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  /* background-color: #fff; */
-    background-color: whitesmoke;
+  background-color: whitesmoke;
   margin: 0;
   padding: 0;
   display: flex;
@@ -23,6 +22,7 @@ body {
   margin-bottom: 90px;
   position: relative;
   z-index: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .timeline-image {
@@ -30,6 +30,7 @@ body {
   height: 150px;
   border-radius: 50%;
   margin-right: 20px;
+  transition: transform 0.5s ease;
 }
 
 .timeline-text {
@@ -42,6 +43,7 @@ body {
   margin-bottom: 16px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #000000;
+  transition: opacity 0.3s ease;
 }
 
 .timeline-description {
@@ -50,6 +52,7 @@ body {
   font-weight: 600;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #000000;
+  transition: opacity 0.3s ease;
 }
 
 .timeline {
@@ -71,7 +74,7 @@ body {
   background-color: #ddd;
   z-index: 0;
   transform: translateY(-50%);
-  transition: width 0.3s ease, left 0.3s ease;
+  transition: width 0.5s ease, left 0.5s ease;
 }
 
 .timeline-entry {
@@ -80,6 +83,7 @@ body {
   flex-grow: 1;
   cursor: pointer;
   z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .timeline-dot {
@@ -88,7 +92,7 @@ body {
   background-color: #ddd;
   border-radius: 50%;
   margin: 0 auto;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   position: relative;
   z-index: 2;
   top: -15px;
@@ -96,6 +100,7 @@ body {
 
 .timeline-dot.active {
   background: radial-gradient(circle closest-side, #ffffff 50%, #007bff 50%);
+  transform: scale(1.2);
 }
 
 .timeline-date {
