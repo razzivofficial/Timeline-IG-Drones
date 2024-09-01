@@ -67,13 +67,13 @@ body {
 
 .timeline-line {
   position: absolute;
-  top: 50%;
+  top: 0; /* Default positioning for larger screens */
   left: 0;
-  height: 4px;
+  width: 4px;
   background-color: #ddd;
   z-index: 0;
-  transform: translateY(-50%);
-  transition: width 0.5s ease, left 0.5s ease;
+  transition: width 0.5s ease, left 0.5s ease, top 0.5s ease, height 0.5s ease;
+  transform: translateY(0); /* Default */
 }
 
 .timeline-entry {
@@ -135,10 +135,11 @@ body {
   }
 
   .timeline-line {
+    width: 4px;
+    height: auto;
+    top: 0;
     left: 50%;
-    width: 4px; /* Adjust width for vertical line */
-    height: auto; /* Allow height to grow as needed */
-    transform: translateX(-50%); /* Center the vertical line */
+    transform: translateX(-50%);
   }
 
   .timeline-entry {

@@ -52,9 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateTimelineLine = () => {
-    if (window.innerWidth <= 768) {
-      // For mobile view, set vertical line properties
-      const timelineRect = timeline.getBoundingClientRect();
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
       const startDot = timelineEntries[0].querySelector(".timeline-dot");
       const endDot =
         timelineEntries[timelineEntries.length - 1].querySelector(
@@ -63,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const startDotRect = startDot.getBoundingClientRect();
       const endDotRect = endDot.getBoundingClientRect();
+      const timelineRect = timeline.getBoundingClientRect();
 
       const startTop =
         startDotRect.top - timelineRect.top + startDotRect.height / 2;
@@ -72,8 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       timelineLine.style.top = `${startTop}px`;
       timelineLine.style.height = `${lineHeight}px`;
+      timelineLine.style.width = "4px";
+      timelineLine.style.left = "50%";
+      timelineLine.style.transform = "translateX(-50%)";
     } else {
-      // For larger screens, keep horizontal line properties
       const startDot = timelineEntries[0].querySelector(".timeline-dot");
       const endDot =
         timelineEntries[timelineEntries.length - 1].querySelector(
@@ -82,16 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const startDotRect = startDot.getBoundingClientRect();
       const endDotRect = endDot.getBoundingClientRect();
-      const containerRect = timeline.getBoundingClientRect();
+      const timelineRect = timeline.getBoundingClientRect();
 
       const startLeft =
-        startDotRect.left - containerRect.left + startDotRect.width / 2;
+        startDotRect.left - timelineRect.left + startDotRect.width / 2;
       const endLeft =
-        endDotRect.right - containerRect.left - endDotRect.width / 2;
+        endDotRect.right - timelineRect.left - endDotRect.width / 2;
       const lineWidth = endLeft - startLeft;
 
       timelineLine.style.left = `${startLeft}px`;
       timelineLine.style.width = `${lineWidth}px`;
+      timelineLine.style.height = "4px";
+      timelineLine.style.top = "50%";
+      timelineLine.style.transform = "translateY(-50%)";
     }
   };
 
@@ -127,8 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     updateTimelineContent(content);
-
-    setTimeout(updateTimelineLine, 300);
+    updateTimelineLine();
   };
 
   timelineEntries.forEach((entry) => {
